@@ -15,22 +15,29 @@ export default function Home() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [accent, setAccent] = useState<'pink' | 'lavender' | 'peach'>('pink');
+  const [preferencesLoaded, setPreferencesLoaded] = useState(false);
 
   useEffect(() => {
-    const storedTheme = typeof window !== 'undefined' ? window.localStorage.getItem('theme') : null;
+    const storedTheme = window.localStorage.getItem('theme');
     if (storedTheme === 'dark' || storedTheme === 'light') {
       setTheme(storedTheme);
     }
+    const storedAccent = window.localStorage.getItem('accent');
+    if (storedAccent === 'pink' || storedAccent === 'lavender' || storedAccent === 'peach') {
+      setAccent(storedAccent);
+    }
+    setPreferencesLoaded(true);
   }, []);
 
   useEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.documentElement.classList.toggle('dark', theme === 'dark');
-    }
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem('theme', theme);
-    }
-  }, [theme]);
+    if (!preferencesLoaded) return;
+
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.dataset.accent = accent;
+    window.localStorage.setItem('theme', theme);
+    window.localStorage.setItem('accent', accent);
+  }, [theme, accent, preferencesLoaded]);
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
@@ -110,8 +117,13 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col w-full bg-gray-50 dark:bg-slate-900" style={{ height: '100dvh' }}>
-      <Navbar theme={theme} onToggleTheme={toggleTheme} />
+    <div className="flex flex-col w-full bg-background text-foreground transition-colors duration-300" style={{ height: '100dvh' }}>
+      <Navbar
+        theme={theme}
+        accent={accent}
+        onToggleTheme={toggleTheme}
+        onChangeAccent={setAccent}
+      />
       <main
         className="flex-1 max-w-4xl w-full mx-auto px-4 py-4 flex flex-col"
         style={{ paddingTop: '4.5rem', overflow: 'hidden' }}

@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const SOURCE_IMAGE = join(__dirname, '../src/app/icon.png');
+const SOURCE_IMAGE = join(__dirname, '../public/memey-icon.svg');
 const OUTPUT_DIR = join(__dirname, '../public/icons');
 const SIZES = [72, 96, 128, 144, 152, 180, 192, 384, 512];
 
@@ -36,7 +36,7 @@ async function generateIcons() {
       await sharp(SOURCE_IMAGE)
         .resize(size, size, {
           fit: 'contain',
-          background: { r: 37, g: 99, b: 235, alpha: 1 }, // bg biru sesuai theme_color
+          background: { r: 255, g: 247, b: 251, alpha: 1 },
         })
         .png()
         .toFile(outputFile);
@@ -45,6 +45,14 @@ async function generateIcons() {
       console.error(`❌ Gagal membuat icon-${size}x${size}.png:`, err.message);
     }
   }
+
+  await sharp(SOURCE_IMAGE)
+    .resize(512, 512, {
+      fit: 'contain',
+      background: { r: 255, g: 247, b: 251, alpha: 1 },
+    })
+    .png()
+    .toFile(join(__dirname, '../src/app/icon.png'));
 
   console.log('\n🎉 Selesai! Semua icon berhasil dibuat.');
   console.log('📌 Jangan lupa copy icon-source.png ke public/icons/ jika belum ada.');

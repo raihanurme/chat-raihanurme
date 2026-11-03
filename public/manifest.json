@@ -1,13 +1,13 @@
 {
-  "name": "Sontoloyo AI",
-  "short_name": "Sontoloyo AI",
-  "description": "Sontoloyo AI - AI Chatbot untuk blog adi-muhamad.my.id",
+  "name": "Memey AI Assistant",
+  "short_name": "Memey AI",
+  "description": "Memey AI Assistant — teman ngobrol AI yang manis dan siap membantu.",
   "display": "standalone",
   "start_url": "/",
   "scope": "/",
   "orientation": "portrait",
-  "theme_color": "#2563eb",
-  "background_color": "#0f172a",
+  "theme_color": "#e85d9e",
+  "background_color": "#fff7fb",
   "categories": ["productivity", "utilities"],
   "icons": [
     {

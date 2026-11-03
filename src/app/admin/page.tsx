@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -37,15 +38,15 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-pink-950 to-slate-900 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-lg shadow-blue-500/30 mb-4">
-            <i className="fas fa-robot text-2xl text-white" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl shadow-lg shadow-pink-500/30 mb-4 overflow-hidden">
+            <Image src="/memey-icon.svg" alt="" width={64} height={64} className="w-full h-full" />
           </div>
-          <h1 className="text-2xl font-bold text-white">Sontoloyo AI</h1>
-          <p className="text-blue-300 text-sm mt-1">Admin Dashboard</p>
+          <h1 className="text-2xl font-bold text-white">Memey AI Assistant</h1>
+          <p className="text-pink-300 text-sm mt-1">Admin Dashboard</p>
         </div>
 
         {/* Card */}
@@ -54,7 +55,7 @@ export default function AdminLoginPage() {
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-sm text-blue-200 mb-2" htmlFor="email">
+              <label className="block text-sm text-pink-200 mb-2" htmlFor="email">
                 Email
               </label>
               <div className="relative">
@@ -66,13 +67,13 @@ export default function AdminLoginPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="admin@adi-muhamad.my.id"
                   required
-                  className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-pink-400 focus:ring-1 focus:ring-pink-400 transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm text-blue-200 mb-2" htmlFor="password">
+              <label className="block text-sm text-pink-200 mb-2" htmlFor="password">
                 Password
               </label>
               <div className="relative">
@@ -84,7 +85,7 @@ export default function AdminLoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   required
-                  className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-pink-400 focus:ring-1 focus:ring-pink-400 transition-colors"
                 />
               </div>
             </div>
@@ -99,7 +100,7 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold py-3 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20"
+              className="w-full bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white font-semibold py-3 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-pink-500/20"
             >
               {loading ? (
                 <>
@@ -121,7 +122,7 @@ export default function AdminLoginPage() {
         </div>
 
         <p className="text-center text-slate-600 text-xs mt-4">
-          &copy; 2026 Sontoloyo AI · adi-muhamad.my.id
+          &copy; 2026 Memey AI Assistant
         </p>
       </div>
     </div>

@@ -2,28 +2,63 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff7fb;
+  --foreground: #3c2433;
+  --surface: #ffffff;
+  --muted: #8b7180;
+  --border: #f2dce8;
+  --accent: #e85d9e;
+  --accent-hover: #d9448b;
+  --accent-soft: #fde7f1;
   --navbar-height: 4rem; /* 64px = h-16 */
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #17121c;
+  --foreground: #f7edf5;
+  --surface: #231a29;
+  --muted: #bba8bb;
+  --border: #3d2c40;
+  --accent: #e879b9;
+  --accent-hover: #f08dc6;
+  --accent-soft: #3a2438;
+}
+
+:root[data-accent="lavender"] {
+  --accent: #9272dc;
+  --accent-hover: #7956cb;
+  --accent-soft: #eee8ff;
+}
+
+:root.dark[data-accent="lavender"] {
+  --accent: #b49aFA;
+  --accent-hover: #c4b0ff;
+  --accent-soft: #302541;
+}
+
+:root[data-accent="peach"] {
+  --accent: #e98269;
+  --accent-hover: #d66b51;
+  --accent-soft: #ffebe3;
+}
+
+:root.dark[data-accent="peach"] {
+  --accent: #f29a7f;
+  --accent-hover: #ffad95;
+  --accent-soft: #3b2826;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 html, body {
@@ -39,6 +74,10 @@ body {
   /* iOS safe area support */
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
+}
+
+* {
+  scrollbar-color: var(--border) transparent;
 }
 
 /* Ensure fixed nav always on top */
